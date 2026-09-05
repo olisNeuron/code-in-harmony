@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>olisNeuron — Code in Harmony</title>
+<title>olisNeuron.wiki</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Indie+Flower&family=Ma+Shan+Zheng&family=Patrick+Hand&family=Rock+Salt&family=Shadows+Into+Light&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
@@ -171,6 +171,7 @@
     color:var(--ink);
     font-size:clamp(2.5rem, 7.5vw, 5.4rem);
     line-height:1.06;
+    white-space:nowrap;
     margin-bottom:.8rem;
   }
   .term{ display:flex; align-items:baseline; gap:.2em .3em; margin-bottom:3.4rem; }
@@ -254,7 +255,7 @@
   /* hero doodles */
   .hero-doodles{ position:relative; min-height:340px; }
   .hero-doodles svg{ position:absolute; }
-  .prism{ width:min(320px, 78%); top:0; right:0; }
+  .prism{ width:min(320px, 78%); top:0; right:20px; }
   .d-scatter{ color:var(--ink); opacity:.85; }
   .d-scatter.purple{ color:var(--purple); }
   .d-scatter.gold{ color:var(--gold-deep); }
@@ -530,10 +531,6 @@
       <circle cx="0" cy="0" r="9"/>
       <path d="M0 -9 L0 9 M0 0 L-6 -5 M0 0 L6 -5"/>
     </g>
-    <g id="d-record">
-      <circle cx="0" cy="0" r="10"/>
-      <circle cx="0" cy="0" r="3"/>
-    </g>
     <g id="d-guitar">
       <path d="M-2 -15 L2 -15 L3.5 -11 L-3.5 -11 Z"/>
       <path d="M0 -11 L0 6"/>
@@ -580,7 +577,7 @@
         <p class="hero-eyebrow" data-i18n="hero.eyebrow">✎ welcome to my corner of the internet</p>
         <div class="term">
           <span class="term-prompt" aria-hidden="true">❯</span>
-          <h1 class="hero-title" aria-label="Code in Harmony"><span id="typeTarget"></span><span class="term-cursor" aria-hidden="true"></span></h1>
+          <h1 class="hero-title" aria-label="olis.wiki"><span id="typeTarget"></span><span class="term-cursor" aria-hidden="true"></span></h1>
         </div>
         <p class="hero-sub" data-i18n="hero.sub">I'm liangshuo — a self-taught builder chasing the warm experiment of the Beatles and the surreal depth of Pink Floyd… one data structure at a time.</p>
         <div class="hero-cta">
@@ -591,18 +588,18 @@
 
       <div class="hero-doodles" aria-hidden="true">
         <!-- Pink Floyd prism + rainbow -->
-        <svg class="prism" viewBox="0 0 300 190" filter="url(#wob)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M8 90 L60 90" stroke="#e8d9b0" stroke-width="5"/>
-          <path d="M8 90 L60 90" stroke="#3d2b1f" stroke-width="1.4"/>
-          <path d="M60 55 L60 125 L118 90 Z" stroke="#3d2b1f" stroke-width="2.5" fill="rgba(255,255,255,0.55)"/>
-          <path d="M66 72 L66 108" stroke="#e8d9b0" stroke-width="3"/>
+        <svg class="prism" viewBox="0 0 355 215" filter="url(#wob)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 205 L132 75" stroke="#e8d9b0" stroke-width="5"/>
+          <path d="M2 205 L132 75" stroke="#3d2b1f" stroke-width="1.4"/>
+          <path d="M150 42 L78 172 L222 172 Z" stroke="#3d2b1f" stroke-width="2.5" fill="rgba(255,255,255,0.55)"/>
+          <path d="M132 75 L186 107" stroke="#e8d9b0" stroke-width="3"/>
           <g stroke-width="6" opacity=".92">
-            <path d="M126 88 C 150 58 190 52 232 62" stroke="#e05252"/>
-            <path d="M124 94 C 150 64 192 58 236 70" stroke="#e07a1f"/>
-            <path d="M123 100 C 150 70 194 64 240 78" stroke="#d9b12c"/>
-            <path d="M123 106 C 152 76 196 70 242 86" stroke="#3f9b57"/>
-            <path d="M124 112 C 154 82 198 76 244 94" stroke="#3f7fbf"/>
-            <path d="M126 118 C 158 88 200 82 246 102" stroke="#6b3d7a"/>
+            <path d="M186 107 C 218 110 252 126 340 160" stroke="#e05252"/>
+            <path d="M186 107 C 219 113 253 133 340 168" stroke="#e07a1f"/>
+            <path d="M186 107 C 220 116 254 140 340 175" stroke="#d9b12c"/>
+            <path d="M186 107 C 221 119 255 147 340 183" stroke="#3f9b57"/>
+            <path d="M186 107 C 222 122 256 154 340 191" stroke="#3f7fbf"/>
+            <path d="M186 107 C 223 125 257 161 340 198" stroke="#6b3d7a"/>
           </g>
         </svg>
 
@@ -612,7 +609,6 @@
         <svg class="d-scatter maroon float" style="--r:-5deg; width:26px; left:48%; top:6%;" viewBox="-12 -12 24 24" filter="url(#wob)" fill="none" stroke="currentColor" stroke-width="2.6"><use href="#d-heart"/></svg>
         <svg class="d-scatter gold float" style="--r:9deg; width:38px; right:6%; bottom:0;" viewBox="-20 -20 40 40" filter="url(#wob)" fill="none" stroke="currentColor" stroke-width="2.2"><use href="#d-sun"/></svg>
         <svg class="d-scatter purple" style="--r:-4deg; width:30px; left:14%; bottom:20%;" viewBox="-14 -14 28 28" filter="url(#wob)" fill="none" stroke="currentColor" stroke-width="2.4"><use href="#d-peace"/></svg>
-        <svg class="d-scatter gold spin" style="width:52px; right:20%; top:30%;" viewBox="-14 -14 28 28" filter="url(#wob)" fill="none" stroke="currentColor" stroke-width="2"><use href="#d-record"/></svg>
       </div>
     </div>
   </section>
@@ -633,35 +629,120 @@
             <p data-i18n="about.p2" data-i18n-html>Right now I'm working through UC Berkeley's <b>CS61B</b> (data structures) and CMU's <b>15-213 / CSAPP</b> (computer systems), turning homework and labs into a public trail of code.</p>
             <p data-i18n="about.p3" data-i18n-html>I also tend a personal knowledge base — an ever-evolving <b>LLM wiki</b> — where raw material gets distilled into notes I can actually find again later.</p>
             <figure class="abbey">
-              <svg class="abbey-svg" viewBox="0 0 420 210" filter="url(#wob)" fill="none" stroke="#3d2b1f" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M14 126 Q 105 120 210 124 T 406 122 L 406 202 L 14 202 Z" fill="#e4d4b0" opacity="0.5" stroke="none"/>
-                <g fill="#fbf6ea" opacity="0.95" stroke="none">
-                  <path d="M20 136 L400 131 L400 143 L20 148 Z"/>
-                  <path d="M20 156 L400 151 L400 163 L20 168 Z"/>
-                  <path d="M20 176 L400 171 L400 183 L20 188 Z"/>
+              <svg class="abbey-svg" viewBox="0 0 440 230" filter="url(#wob)" fill="none" stroke="#3d2b1f" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- sky sun -->
+                <g stroke-width="2">
+                  <circle cx="402" cy="26" r="9" fill="none"/>
+                  <path d="M402 9 L402 14 M402 38 L402 43 M385 26 L390 26 M414 26 L419 26 M390 14 L393 17 M411 14 L414 17 M390 38 L393 35 M411 38 L414 35"/>
                 </g>
-                <path d="M44 122 L44 76" stroke-width="3"/>
-                <rect x="20" y="52" width="56" height="26" rx="4" stroke-width="2.5" fill="#fbf6ea"/>
-                <text x="48" y="70" font-family="Indie Flower, cursive" font-size="12" fill="#3d2b1f" stroke="none" text-anchor="middle">ABBEY RD</text>
-                <path d="M106 124 L106 90" stroke-width="3"/>
-                <path d="M106 92 C 92 78 92 60 106 52 C 120 60 120 78 106 92 Z" stroke-width="2.5"/>
-                <g stroke-width="3">
-                  <circle cx="168" cy="70" r="8" fill="#fbf6ea"/>
-                  <path d="M168 78 L168 116"/>
-                  <path d="M168 116 L160 134"/><path d="M168 116 L175 132"/>
-                  <path d="M168 92 L160 101"/>
-                  <circle cx="238" cy="68" r="8" fill="#fbf6ea"/>
-                  <path d="M238 76 L238 116"/>
-                  <path d="M238 116 L231 134"/><path d="M238 116 L244 131"/>
-                  <path d="M238 90 L245 100"/>
-                  <circle cx="308" cy="70" r="8" fill="#fbf6ea"/>
-                  <path d="M308 78 L308 116"/>
-                  <path d="M308 116 L299 132"/><path d="M308 116 L316 135"/>
-                  <path d="M308 92 L300 101"/>
-                  <circle cx="378" cy="68" r="8" fill="#fbf6ea"/>
-                  <path d="M378 76 L378 116"/>
-                  <path d="M378 116 L370 134"/><path d="M378 116 L384 131"/>
-                  <path d="M378 90 L385 100"/>
+                <!-- distant buildings -->
+                <g fill="#ece1c8" stroke-width="2">
+                  <path d="M70 44 L70 18 L110 6 L150 18 L150 44 Z"/>
+                  <path d="M175 44 L175 22 L215 10 L255 22 L255 44 Z"/>
+                  <path d="M275 44 L275 16 L315 4 L355 16 L355 44 Z"/>
+                </g>
+                <g fill="#fbf6ea" stroke-width="1.5">
+                  <rect x="86" y="20" width="7" height="9"/>
+                  <rect x="104" y="20" width="7" height="9"/>
+                  <rect x="191" y="24" width="7" height="9"/>
+                  <rect x="231" y="24" width="7" height="9"/>
+                  <rect x="291" y="18" width="7" height="9"/>
+                  <rect x="331" y="20" width="7" height="9"/>
+                </g>
+                <!-- hedge / trees behind -->
+                <path d="M0 58 L440 58 L440 44 Q370 30 320 42 Q250 28 200 40 Q130 30 80 42 Q40 32 0 44 Z" fill="#a3b18a" opacity="0.9" stroke-width="2"/>
+                <!-- road -->
+                <path d="M0 58 L440 58 L440 210 L0 210 Z" fill="#d9cdb3" stroke-width="2"/>
+                <!-- zebra crossing -->
+                <g fill="#fbf6ea" stroke-width="2">
+                  <path d="M124 68 L140 68 L145 198 L119 198 Z" transform="rotate(1.2 132 133)"/>
+                  <path d="M160 68 L176 68 L181 198 L155 198 Z" transform="rotate(-1 168 133)"/>
+                  <path d="M196 68 L212 68 L217 198 L191 198 Z" transform="rotate(0.8 204 133)"/>
+                  <path d="M232 68 L248 68 L253 198 L227 198 Z" transform="rotate(-1.4 240 133)"/>
+                  <path d="M268 68 L284 68 L289 198 L263 198 Z" transform="rotate(1 276 133)"/>
+                  <path d="M304 68 L320 68 L325 198 L299 198 Z" transform="rotate(-0.9 312 133)"/>
+                  <path d="M340 68 L356 68 L361 198 L335 198 Z" transform="rotate(1.3 348 133)"/>
+                </g>
+                <!-- VW beetle -->
+                <g>
+                  <path d="M24 90 L22 76 Q22 60 40 57 Q57 54 67 62 Q73 69 73 78 L73 90 Z" fill="#fbf6ea" stroke-width="2.5"/>
+                  <path d="M40 62 Q46 58 52 60 M54 61 Q60 63 64 68" stroke-width="1.5"/>
+                  <circle cx="34" cy="90" r="7" fill="#fbf6ea" stroke-width="2.5"/>
+                  <circle cx="62" cy="90" r="7" fill="#fbf6ea" stroke-width="2.5"/>
+                  <circle cx="34" cy="90" r="1.5" fill="#3d2b1f" stroke="none"/>
+                  <circle cx="62" cy="90" r="1.5" fill="#3d2b1f" stroke="none"/>
+                  <circle cx="71" cy="72" r="1.5" fill="#c99b2e" stroke="none"/>
+                  <rect x="56" y="80" width="22" height="7" rx="1" fill="#f4e3b6" stroke-width="1.2"/>
+                  <text x="67" y="85" font-family="Indie Flower, cursive" font-size="3.6" fill="#3d2b1f" stroke="none" text-anchor="middle">LMW 281F</text>
+                </g>
+                <!-- ABBEY RD sign -->
+                <g>
+                  <path d="M46 128 L46 198" stroke-width="3"/>
+                  <rect x="12" y="100" width="68" height="28" rx="4" fill="#fbf6ea" stroke-width="2.5"/>
+                  <text x="46" y="119" font-family="Indie Flower, cursive" font-size="12.5" fill="#3d2b1f" stroke="none" text-anchor="middle">ABBEY RD</text>
+                  <circle cx="17" cy="114" r="1.2" fill="#3d2b1f" stroke="none"/>
+                  <circle cx="75" cy="114" r="1.2" fill="#3d2b1f" stroke="none"/>
+                </g>
+
+                <!-- the four Beatles -->
+                <g transform="translate(240,193) scale(1.12) translate(-240,-193)">
+                <!-- John (white suit) -->
+                <g>
+                  <circle cx="150" cy="100" r="8.5" fill="#fbf6ea" stroke-width="2.5"/>
+                  <path d="M143 93 Q150 88 157 93 M142 96 Q140 102 141 107 M158 96 Q160 102 159 107 M143 97 Q144 104 145 108" stroke-width="2"/>
+                  <path d="M141 112 Q150 109 159 112 L161 152 L139 152 Z" fill="#fbf6ea" stroke-width="2.5"/>
+                  <path d="M147 112 L150 119 L153 112" stroke-width="2"/>
+                  <path d="M141 116 L133 138 M159 116 L167 138" stroke-width="3"/>
+                  <polyline points="150,152 145,172 134,193" stroke-width="8"/>
+                  <polyline points="150,152 145,172 134,193" stroke-width="5" stroke="#fbf6ea"/>
+                  <polyline points="150,152 155,172 166,193" stroke-width="8"/>
+                  <polyline points="150,152 155,172 166,193" stroke-width="5" stroke="#fbf6ea"/>
+                  <ellipse cx="134" cy="193" rx="6" ry="3.5" fill="#3d2b1f" stroke-width="2"/>
+                  <ellipse cx="166" cy="193" rx="6" ry="3.5" fill="#3d2b1f" stroke-width="2"/>
+                </g>
+
+                <!-- Ringo (black suit) -->
+                <g>
+                  <circle cx="208" cy="100" r="8.5" fill="#fbf6ea" stroke-width="2.5"/>
+                  <path d="M201 93 Q208 89 215 93 M201 96 Q200 100 201 103 M215 96 Q216 100 215 103" stroke-width="2"/>
+                  <path d="M199 112 Q208 109 217 112 L219 152 L197 152 Z" fill="#3d2b1f" stroke-width="2.5"/>
+                  <path d="M204 112 L208 119 L212 112 Z" fill="#fbf6ea" stroke-width="1.5"/>
+                  <path d="M199 116 L191 138 M217 116 L225 138" stroke-width="3"/>
+                  <polyline points="208,152 203,172 196,193" stroke-width="8"/>
+                  <polyline points="208,152 213,172 220,193" stroke-width="8"/>
+                  <ellipse cx="196" cy="193" rx="6" ry="3.5" fill="#3d2b1f" stroke-width="2"/>
+                  <ellipse cx="220" cy="193" rx="6" ry="3.5" fill="#3d2b1f" stroke-width="2"/>
+                </g>
+
+                <!-- Paul (barefoot, cigarette) -->
+                <g>
+                  <circle cx="268" cy="100" r="8.5" fill="#fbf6ea" stroke-width="2.5"/>
+                  <path d="M261 93 Q268 88 275 93 M261 96 Q259 101 261 105 M275 96 Q277 101 275 105" stroke-width="2"/>
+                  <path d="M259 112 Q268 109 277 112 L279 152 L257 152 Z" fill="#5a4632" stroke-width="2.5"/>
+                  <path d="M264 112 L268 119 L272 112 Z" fill="#fbf6ea" stroke-width="1.5"/>
+                  <path d="M259 116 L252 138 M277 116 L284 124 L281 131" stroke-width="3"/>
+                  <path d="M281 131 L288 129" stroke-width="1.5"/>
+                  <circle cx="288" cy="129" r="1.5" fill="#c0601f" stroke="none"/>
+                  <polyline points="268,152 264,172 259,193" stroke-width="8"/>
+                  <polyline points="268,152 271,172 272,188" stroke-width="8"/>
+                  <ellipse cx="259" cy="193" rx="6" ry="3" fill="#fbf6ea" stroke-width="2"/>
+                  <ellipse cx="272" cy="188" rx="5.5" ry="3" fill="#fbf6ea" stroke-width="2"/>
+                </g>
+
+                <!-- George (denim) -->
+                <g>
+                  <circle cx="326" cy="100" r="8.5" fill="#fbf6ea" stroke-width="2.5"/>
+                  <path d="M319 93 Q326 88 333 93 M319 96 Q317 103 319 109 M333 96 Q335 103 333 109" stroke-width="2"/>
+                  <path d="M317 112 Q326 109 335 112 L337 152 L315 152 Z" fill="#2f6f6a" stroke-width="2.5"/>
+                  <path d="M322 112 L326 119 L330 112 Z" fill="#fbf6ea" stroke-width="1.5"/>
+                  <path d="M317 116 L309 138 M335 116 L343 138" stroke-width="3"/>
+                  <polyline points="326,152 321,172 314,193" stroke-width="8"/>
+                  <polyline points="326,152 321,172 314,193" stroke-width="5" stroke="#2f6f6a"/>
+                  <polyline points="326,152 331,172 338,193" stroke-width="8"/>
+                  <polyline points="326,152 331,172 338,193" stroke-width="5" stroke="#2f6f6a"/>
+                  <ellipse cx="314" cy="193" rx="6" ry="3.5" fill="#3d2b1f" stroke-width="2"/>
+                  <ellipse cx="338" cy="193" rx="6" ry="3.5" fill="#3d2b1f" stroke-width="2"/>
+                </g>
                 </g>
               </svg>
               <figcaption class="abbey-names">
@@ -835,7 +916,7 @@
       "nav.contact":"contact",
 
       "hero.eyebrow":"✎ welcome to my corner of the internet",
-      "hero.title":"Code in Harmony",
+      "hero.title":"olis.wiki",
       "hero.sub":"I'm liangshuo — a self-taught builder chasing the warm experiment of the Beatles and the surreal depth of Pink Floyd… one data structure at a time.",
       "hero.cta1":"▶ explore the projects",
       "hero.cta2":"♫ say hello",
@@ -902,7 +983,7 @@
       "nav.contact":"联系",
 
       "hero.eyebrow":"✎ 欢迎来到我的互联网一角",
-      "hero.title":"代码 · 和声",
+      "hero.title":"olis.wiki",
       "hero.sub":"我是 liangshuo——自学开发者，追逐披头士的温暖实验与平克·弗洛伊德的超现实深度……一次一个数据结构。",
       "hero.cta1":"▶ 看看我的项目",
       "hero.cta2":"♫ 打个招呼",
@@ -981,7 +1062,7 @@
   }
 
   function typeTick(){
-    var phrase = (I18N[current] && I18N[current]["hero.title"]) || "Code in Harmony";
+    var phrase = (I18N[current] && I18N[current]["hero.title"]) || "olis.wiki";
     if (typeState.deleting){
       typeState.i--;
       typeTarget.textContent = phrase.slice(0, Math.max(0, typeState.i));
@@ -995,11 +1076,9 @@
       typeState.i++;
       typeTarget.textContent = phrase.slice(0, typeState.i);
       if (typeState.i >= phrase.length){
-        typeState.deleting = true;
-        typeTimer = setTimeout(typeTick, 2400);
-      } else {
-        typeTimer = setTimeout(typeTick, 85 + Math.random()*85);
+        return; // done — keep the title, don't delete / re-type
       }
+      typeTimer = setTimeout(typeTick, 85 + Math.random()*85);
     }
   }
 
