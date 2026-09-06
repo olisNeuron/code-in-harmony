@@ -157,7 +157,7 @@
     display:flex; align-items:center;
   }
   .hero-grid{
-    display:grid; grid-template-columns:1.15fr .85fr; gap:2rem; align-items:center;
+    display:grid; grid-template-columns:1fr 1.1fr; gap:2rem; align-items:center;
   }
   .hero-eyebrow{
     font-family:var(--f-note);
@@ -253,9 +253,9 @@
   }
 
   /* hero doodles */
-  .hero-doodles{ position:relative; min-height:340px; }
+  .hero-doodles{ position:relative; min-height:400px; }
   .hero-doodles svg{ position:absolute; }
-  .prism{ width:min(320px, 78%); top:0; right:20px; }
+  .prism{ width:100%; top:0; left:0; }
   .d-scatter{ color:var(--ink); opacity:.85; }
   .d-scatter.purple{ color:var(--purple); }
   .d-scatter.gold{ color:var(--gold-deep); }
@@ -487,7 +487,8 @@
   /* ============ RESPONSIVE ============ */
   @media (max-width:900px){
     .hero-grid{ grid-template-columns:1fr; }
-    .hero-doodles{ min-height:240px; order:-1; }
+    .hero-doodles{ min-height:260px; order:-1; }
+    .prism{ width:min(100%, 300px); left:50%; transform:translateX(-50%); }
     .about-cols{ grid-template-columns:1fr; }
     .projects-grid{ grid-template-columns:1fr; }
     .skills-grid{ grid-template-columns:1fr; }
@@ -588,7 +589,7 @@
 
       <div class="hero-doodles" aria-hidden="true">
         <!-- Pink Floyd prism + rainbow -->
-        <svg class="prism" viewBox="0 0 355 215" filter="url(#wob)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="prism draw-svg" viewBox="0 0 355 215" filter="url(#wob)" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path d="M2 205 L132 75" stroke="#e8d9b0" stroke-width="5"/>
           <path d="M2 205 L132 75" stroke="#3d2b1f" stroke-width="1.4"/>
           <path d="M150 42 L78 172 L222 172 Z" stroke="#3d2b1f" stroke-width="2.5" fill="rgba(255,255,255,0.55)"/>
@@ -629,7 +630,7 @@
             <p data-i18n="about.p2" data-i18n-html>Right now I'm working through UC Berkeley's <b>CS61B</b> (data structures) and CMU's <b>15-213 / CSAPP</b> (computer systems), turning homework and labs into a public trail of code.</p>
             <p data-i18n="about.p3" data-i18n-html>I also tend a personal knowledge base — an ever-evolving <b>LLM wiki</b> — where raw material gets distilled into notes I can actually find again later.</p>
             <figure class="abbey">
-              <svg class="abbey-svg" viewBox="0 0 440 230" filter="url(#wob)" fill="none" stroke="#3d2b1f" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg class="abbey-svg draw-svg" viewBox="0 0 440 230" filter="url(#wob)" fill="none" stroke="#3d2b1f" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <!-- sky sun -->
                 <g stroke-width="2">
                   <circle cx="402" cy="26" r="9" fill="none"/>
@@ -1109,6 +1110,89 @@
     });
   }
   apply(current);
+})();
+</script>
+
+<script>
+(function(){
+  "use strict";
+  // Hand-drawn "sketch in" effect for the prism (hero) and Abbey Road (about) SVGs.
+  // Strokes draw themselves in; fills fade in shortly after. Triggered once on scroll,
+  // and fully skipped when the user prefers reduced motion or IO isn't available.
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var FADE_SEL = 'path, line, polyline, polygon, circle, rect, ellipse, text';
+
+  function hasStroke(el, cs){
+    return cs.stroke && cs.stroke !== 'none' && parseFloat(cs.strokeWidth) > 0;
+  }
+  function hasFill(el, cs){
+    return cs.fill && cs.fill !== 'none';
+  }
+
+  document.querySelectorAll('svg.draw-svg').forEach(function(svg){
+    var nodes = Array.prototype.slice.call(svg.querySelectorAll(FADE_SEL));
+    var items = [];
+
+    nodes.forEach(function(el){
+      var cs = getComputedStyle(el);
+      var stroke = hasStroke(el, cs);
+      var fill = hasFill(el, cs);
+      if (!stroke && !fill) return;
+
+      var len = 0;
+      if (stroke){
+        try { len = el.getTotalLength(); } catch(e){ len = 0; }
+        if (!len || len <= 0) stroke = false;
+      }
+      if (!stroke && !fill) return;
+
+      // Hide until we're ready to draw (no flash before the reveal).
+      if (stroke){
+        el.style.strokeDasharray = len;
+        el.style.strokeDashoffset = len;
+      }
+      if (fill){
+        el.style.fillOpacity = '0';
+      }
+      items.push({ el: el, stroke: stroke, fill: fill, len: len });
+    });
+
+    if (!items.length) return;
+
+    var drawn = false;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting && !drawn){
+          drawn = true;
+          io.disconnect();
+          play(items);
+        }
+      });
+    }, { threshold: 0.25 });
+    io.observe(svg);
+
+    function play(list){
+      var i = 0;
+      list.forEach(function(item){
+        var delay = i * 40;
+        i++;
+        if (item.stroke){
+          item.el.animate(
+            [ { strokeDashoffset: item.len }, { strokeDashoffset: 0 } ],
+            { duration: 600, delay: delay, easing: 'cubic-bezier(0.33, 1, 0.68, 1)', fill: 'forwards' }
+          );
+        }
+        if (item.fill){
+          item.el.animate(
+            [ { fillOpacity: 0 }, { fillOpacity: 1 } ],
+            { duration: 500, delay: delay + 120, easing: 'ease-out', fill: 'forwards' }
+          );
+        }
+      });
+    }
+  });
 })();
 </script>
 </body>
